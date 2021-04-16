@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyAnimeListPocket</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="recipe_name">Nama Recipe</string>
+    <string name="recipe_info">Info Recipe</string>
+    <string name="recipe_detail">Detail</string>
+    <string name="action_profile">action_profile</string>
+    <string name="action_back">action_back</string>
+    <string name="recipe">recipe_detail</string>
+    <string name="content_text">content_text</string>
+</resources>

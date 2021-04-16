@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_grap"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.myanimelistpocket.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/topAnimeFragment"
+        android:name="com.example.myanimelistpocket.TopAnimeFragment"
+        android:label="fragment_top_anime"
+        tools:layout="@layout/fragment_top_anime" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.myanimelistpocket.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.myanimelistpocket.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+</navigation>
