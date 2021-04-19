@@ -1,21 +1,34 @@
 package com.example.myanimelistpocket
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myanimelistpocket.api.ControlApi
+import com.example.myanimelistpocket.api.CustomCallback
+import com.example.myanimelistpocket.api.responsemodel.TopResult
 import com.example.myanimelistpocket.databinding.FragmentTopAnimeBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class TopAnimeFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
+
+    var controlApi = ControlApi()
+
+    val listTitle = ArrayList<String>()
+    val listDesc = ArrayList<String>()
+    val listImg = ArrayList<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,35 +37,62 @@ class TopAnimeFragment : Fragment() {
 
         (activity as AppCompatActivity).supportActionBar?.title = "Star"
 
-        val binding: FragmentTopAnimeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_top_anime, container, false)
+        val binding: FragmentTopAnimeBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_top_anime,
+            container,
+            false
+        )
 
-        val title = arrayOf("d116df5",
-            "36ffc75", "f5cfe78", "5b87628",
-            "db8d14e", "9913dc4", "e120f96",
-            "466251b")
+        controlApi.TopAnime(object : CustomCallback {
+            override fun onSucess(message: String?, retData: Any?) {
+                // ubah objek menjadi string JSON
+                val gson = Gson()
+                val jsonValue = gson.toJson(retData)
 
-        val secondaryTitle = arrayOf("Kekayaan", "Teknologi",
-            "Keluarga", "Bisnis",
-            "Keluarga", "Hutang",
-            "Teknologi", "Pidana")
+                // jadi List
+                val type = object : TypeToken<List<TopResult>>(){}.type
+                val mapList: List<TopResult> = gson.fromJson<List<TopResult>>(jsonValue, type)
+                for (map in mapList) {
+                    Log.e("title", map.title.toString())
+                    listTitle.add(map.title)
+                    listDesc.add(map.url)
+                    listImg.add(map.image_url)
+                }
 
-        val description = arrayOf("pertanyaan 9",
-            "pertanyaan 11", "pertanyaan 17", "test forum",
-            "pertanyaan 12", "pertanyaan 18", "pertanyaan 20",
-            "pertanyaan 21")
+                viewManager = LinearLayoutManager(activity)
+                viewAdapter = TopAnimeAdapter(listTitle, listDesc, listImg)
 
-        viewManager = LinearLayoutManager(activity)
-        viewAdapter = TopAnimeAdapter(title, description)
+                recyclerView = binding.myRecyclerView
 
-        recyclerView = binding.myRecyclerView
+                recyclerView.apply {
+                    layoutManager = viewManager
+                    adapter = viewAdapter
+                }
+            }
 
-        recyclerView.apply {
-            layoutManager = viewManager
-            adapter = viewAdapter
-        }
+            override fun onFailure(message: String?) {
+                Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show()
+            }
+        })
+
+//        viewManager = LinearLayoutManager(activity)
+//        viewAdapter = TopAnimeAdapter(title, description)
+//
+//        recyclerView = binding.myRecyclerView
+//
+//        recyclerView.apply {
+//            layoutManager = viewManager
+//            adapter = viewAdapter
+//        }
 
         // Inflate the layout for this fragment
         return binding.root
     }
-//    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        super.onViewCreated(view, savedInstanceState)
+
+    }
 }
