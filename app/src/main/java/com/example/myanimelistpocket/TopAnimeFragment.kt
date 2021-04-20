@@ -56,7 +56,7 @@ class TopAnimeFragment : Fragment() {
                 for (map in mapList) {
                     Log.e("title", map.title.toString())
                     listTitle.add(map.title)
-                    listDesc.add(map.url)
+                    listDesc.add(map.score.toString())
                     listImg.add(map.image_url)
                 }
 

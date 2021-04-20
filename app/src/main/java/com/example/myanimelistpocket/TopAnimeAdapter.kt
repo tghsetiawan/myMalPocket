@@ -26,15 +26,15 @@ class TopAnimeAdapter(private val dataTitle: ArrayList<String>, private val data
             .apply(RequestOptions().override(350, 550))
             .into(viewHolder.image)
         viewHolder.title.text = dataTitle[position]
-        viewHolder.desc.text = dataDesc[position]
+        viewHolder.score.text = dataDesc[position]
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataTitle.size
 
     class ViewHolder(binding: ItemCardviewBinding) : RecyclerView.ViewHolder(binding.root) {
-        val title = binding.tvItemName
-        val desc = binding.tvItemDetail
+        val title = binding.animeTitle
+        val score = binding.animeScore
         val image = binding.imgItemPhoto
     }
 }
