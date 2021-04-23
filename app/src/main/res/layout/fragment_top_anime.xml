@@ -3,11 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.myanimelistpocket.viewmodel.TopAnimeViewModel" />
+    </data>
+
     <RelativeLayout
         android:id="@+id/topAnimeFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".TopAnimeFragment">
+        tools:context=".fragment.TopAnimeFragment">
 
 
         <androidx.recyclerview.widget.RecyclerView
