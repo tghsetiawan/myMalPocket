@@ -5,12 +5,37 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.example.myanimelistpocket.R
+import com.example.myanimelistpocket.databinding.FragmentDetailAnimeBinding
+import com.example.myanimelistpocket.databinding.FragmentTopAnimeBinding
+import com.example.myanimelistpocket.viewmodel.DetailAnimeViewModel
+import com.example.myanimelistpocket.viewmodel.DetailAnimeViewModelFactory
+import com.example.myanimelistpocket.viewmodel.TopAnimeViewModel
 
 class DetailAnimeFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_anime, container, false)
+
+    private lateinit var viewModel: DetailAnimeViewModel
+    private lateinit var binding: FragmentDetailAnimeBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Detail"
+
+        binding = FragmentDetailAnimeBinding.inflate(inflater)
+        binding.setLifecycleOwner(this)
+
+        //accept args
+        var argUsername = DetailAnimeFragmentArgs.fromBundle(arguments!!).username
+        val vmFactory = DetailAnimeViewModelFactory(argUsername)
+
+        binding.viewModel = ViewModelProvider(this, vmFactory).get(DetailAnimeViewModel::class.java)
+
+        return binding.root
     }
 }

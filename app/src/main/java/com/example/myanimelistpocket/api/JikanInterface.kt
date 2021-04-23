@@ -16,7 +16,7 @@ interface JikanInterface {
     @GET("/v3/top/anime")
     suspend fun topAnime(): BaseDataTopResult
 
-//    // function search anime by id
-//    @GET("/v3/anime/{id}")
-//    suspend fun searchIdAnime(@Path("id") title: String?): Call<BaseDataDetailResult>
+    // function search anime by id
+    @GET("/v3/anime/{id}")
+    suspend fun searchIdAnime(@Path("id") title: String?): BaseDataDetailResult
 }

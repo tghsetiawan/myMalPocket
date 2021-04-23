@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myanimelistpocket.adapter.TopAnimeAdapter
@@ -41,7 +42,7 @@ class TopAnimeFragment : Fragment() {
 
         //add reyclerview
         viewManager = LinearLayoutManager(activity)
-        viewAdapter = TopAnimeAdapter()
+        viewAdapter = TopAnimeAdapter({item->showDetail(item)})
         binding.myRecyclerView.adapter = viewAdapter
         binding.myRecyclerView.apply {
             layoutManager = viewManager
@@ -52,6 +53,13 @@ class TopAnimeFragment : Fragment() {
 
         // Inflate the layout for this fragment
         return binding.root
+    }
+
+    fun showDetail(username: String){
+        Log.d("showDetail: ","OnClick = " + username)
+        //navigasi ke halaman lain
+        this.findNavController()
+            .navigate(TopAnimeFragmentDirections.actionTopAnimeFragmentToDetailAnimeFragment(username))
     }
 
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

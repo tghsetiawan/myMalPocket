@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myanimelistpocket.api.responsemodel.topresult.TopResult
 import com.example.myanimelistpocket.databinding.ItemCardviewBinding
 
-class TopAnimeAdapter : ListAdapter<TopResult, TopAnimeAdapter.ViewHolder>(DiffCallback){
+class TopAnimeAdapter(private val showDetail: (String) -> Unit) : ListAdapter<TopResult, TopAnimeAdapter.ViewHolder>(DiffCallback){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ItemCardviewBinding.inflate(LayoutInflater.from(parent.context),parent, false))
@@ -19,9 +19,14 @@ class TopAnimeAdapter : ListAdapter<TopResult, TopAnimeAdapter.ViewHolder>(DiffC
         holder.bind(item)
     }
 
-    class ViewHolder(private var binding: ItemCardviewBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private var binding: ItemCardviewBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(topResult: TopResult) {
             binding.item = topResult
+
+            binding.btnDetail.setOnClickListener {
+                showDetail(topResult.mal_id.toString())
+            }
+
             binding.executePendingBindings()
         }
     }
