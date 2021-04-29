@@ -32,7 +32,7 @@ class TopAnimeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Star"
+//        (activity as AppCompatActivity).supportActionBar?.title = "Star"
 
         viewModel = ViewModelProvider(this).get(TopAnimeViewModel::class.java)
         binding = FragmentTopAnimeBinding.inflate(inflater)

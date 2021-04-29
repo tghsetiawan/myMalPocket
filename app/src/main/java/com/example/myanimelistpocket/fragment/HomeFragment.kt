@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity).supportActionBar?.title = "Home"
+//        (activity as AppCompatActivity).supportActionBar?.title = "Home"
 
 //        viewModel = ViewModelProvider(this).get(TopAnimeViewModel::class.java)
         binding = FragmentHomeBinding.inflate(inflater)

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreen"
+    android:background="#1c7ac2">
+
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/jikan_logo"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/txt_title1"
+        android:text="Jikan API"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_logo"
+        android:textAlignment="center"
+        android:textSize="42sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/txt_title2"
+        android:text="Unofficial MyAnimeList API"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_title1"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:indeterminate="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:indeterminateTint="@color/white"
+        android:layout_below="@id/txt_title2"/>
+
+
+
+</RelativeLayout>
