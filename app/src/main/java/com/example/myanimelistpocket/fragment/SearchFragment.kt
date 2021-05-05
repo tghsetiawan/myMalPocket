@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -61,6 +62,5 @@ class SearchFragment : Fragment() {
         this.findNavController()
                 .navigate(SearchFragmentDirections.actionSearchFragmentToDetailAnimeFragment(username))
     }
-    
     
 }

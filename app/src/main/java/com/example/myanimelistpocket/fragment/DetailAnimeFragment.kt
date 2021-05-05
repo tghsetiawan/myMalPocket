@@ -25,8 +25,6 @@ class DetailAnimeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-//        (activity as AppCompatActivity).supportActionBar?.title = "Detail"
-
         binding = FragmentDetailAnimeBinding.inflate(inflater)
         binding.setLifecycleOwner(this)
 
