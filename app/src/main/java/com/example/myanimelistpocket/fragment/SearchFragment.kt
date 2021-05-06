@@ -36,7 +36,7 @@ class SearchFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.btnCari.setOnClickListener {
-            val title = binding.editTextTextPersonName.text
+            val title = binding.textInputEditText.text
             viewModel.searchAnime(title.toString())
 
             //add reyclerview

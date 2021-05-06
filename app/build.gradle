@@ -86,5 +86,7 @@ dependencies {
 
     //viewPager
     implementation "androidx.viewpager2:viewpager2:1.0.0"
-    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
+//    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
+    implementation 'me.relex:circleindicator:2.1.6'
+    implementation 'com.github.adrielcafe:PageIndicatorView:1.0.6'
 }
