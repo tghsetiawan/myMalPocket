@@ -28,7 +28,7 @@ class TopAnimeFragment : Fragment() {
     private lateinit var viewModel : TopAnimeViewModel
     private lateinit var binding : FragmentTopAnimeBinding
 
-    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         viewModel = ViewModelProvider(this).get(TopAnimeViewModel::class.java)
         binding = FragmentTopAnimeBinding.inflate(inflater)
@@ -57,8 +57,4 @@ class TopAnimeFragment : Fragment() {
         this.findNavController()
             .navigate(TopAnimeFragmentDirections.actionTopAnimeFragmentToDetailAnimeFragment(username))
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//    }
 }

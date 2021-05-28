@@ -6,7 +6,7 @@
     <data>
         <variable
             name="club"
-            type="com.example.myanimelistpocket.Club" />
+            type="com.example.myanimelistpocket.data.Club" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
