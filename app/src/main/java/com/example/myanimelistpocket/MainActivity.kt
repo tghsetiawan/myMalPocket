@@ -19,6 +19,7 @@ import com.example.myanimelistpocket.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     //ini branch test
+    //ini branch main
 
     private lateinit var navControl: NavController
 
