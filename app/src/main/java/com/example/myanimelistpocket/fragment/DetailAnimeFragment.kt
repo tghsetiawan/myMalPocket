@@ -20,11 +20,7 @@ class DetailAnimeFragment : Fragment() {
     private lateinit var viewModel: DetailAnimeViewModel
     private lateinit var binding: FragmentDetailAnimeBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentDetailAnimeBinding.inflate(inflater)
         binding.setLifecycleOwner(this)
 

@@ -18,6 +18,8 @@ import com.example.myanimelistpocket.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    //ini branch test
+
     private lateinit var navControl: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit
 
 var TAG = "api"
 private var retrofit: Retrofit? = null
-private val BASE_URL = "https://api.jikan.moe/"
+private const val BASE_URL = "https://api.jikan.moe/"
 
 private fun getRetrofitInstance(): Retrofit? {
     val okHttpClient: OkHttpClient = OkHttpClient.Builder()

@@ -1,36 +1,46 @@
 package com.example.myanimelistpocket.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myanimelistpocket.Club
-import com.example.myanimelistpocket.R
+import com.example.myanimelistpocket.api.responsemodel.topresult.TopResult
+import com.example.myanimelistpocket.data.Club
 import com.example.myanimelistpocket.databinding.HalamanViewpagerBinding
 import com.example.myanimelistpocket.databinding.ItemCardviewBinding
 
-class ViewPagerAdapter(private var listClubs: MutableList<Club>?) :
-    RecyclerView.Adapter<ViewPagerAdapter.MyViewHolder>() {
+class ViewPagerAdapter(private var listClubs: MutableList<Club>?) : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
 
-    class MyViewHolder(val itemBinding: HalamanViewpagerBinding) : RecyclerView.ViewHolder(itemBinding.root){
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(HalamanViewpagerBinding.inflate(LayoutInflater.from(parent.context),parent, false))
+    }
 
-        private var binding : HalamanViewpagerBinding? = null
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+//        val item = getItem(position)
+//        holder.bind(item)
 
-        init {
-            this.binding = itemBinding
+        holder.itemBinding.club = listClubs?.get(position)
+    }
+
+
+    class ViewHolder(val itemBinding: HalamanViewpagerBinding) : RecyclerView.ViewHolder(itemBinding.root){
+//        private var binding : HalamanViewpagerBinding? = null
+//        init { this.binding = itemBinding }
+        fun bind(club: Club) {
+            itemBinding.club = club
+
+            itemBinding.executePendingBindings()
         }
-
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(HalamanViewpagerBinding.inflate(LayoutInflater.from(parent.context),parent, false))
-    }
-
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-//        val inflater = LayoutInflater.from(ctx)
-//        val binding: HalamanViewpagerBinding = DataBindingUtil.inflate(inflater, R.layout.halaman_viewpager,parent,false)
-//        return MyViewHolder(binding)
+//    companion object DiffCallback: DiffUtil.ItemCallback<TopResult>(){
+//        override fun areItemsTheSame(oldItem: TopResult, newItem: TopResult): Boolean {
+//            return oldItem === newItem
+//        }
+//
+//        override fun areContentsTheSame(oldItem: TopResult, newItem: TopResult): Boolean {
+//            return oldItem.mal_id == newItem.mal_id
+//        }
 //    }
 
     override fun getItemCount(): Int {
@@ -39,9 +49,4 @@ class ViewPagerAdapter(private var listClubs: MutableList<Club>?) :
         }
         return 0
     }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.itemBinding.club = listClubs?.get(position)
-    }
-
 }

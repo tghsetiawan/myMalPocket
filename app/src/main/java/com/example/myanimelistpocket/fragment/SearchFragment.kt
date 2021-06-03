@@ -53,14 +53,13 @@ class SearchFragment : Fragment() {
 
         // Inflate the layout for this fragment
         return binding.root
-//        return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
-    fun showDetail(username: String){
-        Log.d("showDetail: ","OnClick = " + username)
+    fun showDetail(id: String){
+        Log.d("showDetail: ","OnClick = " + id)
         //navigasi ke halaman lain
         this.findNavController()
-                .navigate(SearchFragmentDirections.actionSearchFragmentToDetailAnimeFragment(username))
+                .navigate(SearchFragmentDirections.actionSearchFragmentToDetailAnimeFragment(id))
     }
     
 }

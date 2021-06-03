@@ -14,39 +14,30 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class DetailAnimeViewModel (id: String) : ViewModel() {
-    private val _test = MutableLiveData<String>()
     private val _data = MutableLiveData<BaseDataDetailResult>()
-    private val _items = MutableLiveData<List<TopResult>>()
-
-    val test: LiveData<String>
-        get() = _test
 
     val data: LiveData<BaseDataDetailResult>
         get() = _data
-
-    val items: LiveData<List<TopResult>>
-        get() = _items
 
     private var vmJob = Job()
     private val crScope = CoroutineScope(vmJob + Dispatchers.Main)
 
     init {
         initData(id)
-//        Log.d( "Init", "In View Model Detail " + id)
     }
 
     private fun initData(id: String) {
         crScope.launch {
             try {
                 val resultData = JikanApi.retrofitService.searchIdAnime(id)
-//                val resultItems = JikanApi.retrofitService.topAnime().top
 
                 if(resultData.request_cached){
                     _data.value = resultData
                     Log.d("initData: ", resultData.toString())
                 }
             } catch (t: Throwable) {
-                _test.value = "Gagal" + t
+                Log.d("initData: Gagal", t.toString())
+//                _test.value = "Gagal" + t
             }
         }
     }

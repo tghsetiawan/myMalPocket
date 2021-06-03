@@ -52,23 +52,6 @@ class SearchAnimeViewModel : ViewModel() {
         }
     }
 
-//    private fun initData(title: String) {
-//        crScope.launch {
-//            try {
-//                val resultData = JikanApi.retrofitService.searchAnime(title)
-////                val resultItems = JikanApi.retrofitService.topAnime().top
-//
-//                if(resultData.request_cached){
-////                    _items.value = resultItems
-////                    Log.d("initData: ", resultItems.toString())
-//                    _test.value = "Berhasil"
-//                }
-//            } catch (t: Throwable) {
-//                _test.value = "Gagal" + t
-//            }
-//        }
-//    }
-
     override fun onCleared() {
         super.onCleared()
         vmJob.cancel()

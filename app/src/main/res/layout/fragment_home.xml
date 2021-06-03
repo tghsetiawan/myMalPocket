@@ -12,8 +12,8 @@
             android:id="@+id/pageIndicatorView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:elevation="10dp"
+            android:layout_marginBottom="25dp"
+            android:elevation="100dp"
             app:piv_animationType="thinWorm"
             app:piv_dynamicCount="true"
             app:piv_interactiveAnimation="true"
@@ -22,13 +22,30 @@
             app:piv_viewPager="@id/view_pager_main"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="@id/view_pager_main"/>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager_main"
+            android:layout_width="0dp"
+            android:layout_height="380dp"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="5dp"
+            android:layout_centerInParent="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/grey_200"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_parent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"/>
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingVertical="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_pager_main"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
